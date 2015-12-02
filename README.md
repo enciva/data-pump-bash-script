@@ -13,3 +13,9 @@ Use zip or gzip to compress the dump file for easier FTP and/or mailing
 Write the contents of the log file into the body of an email.
 
 FTP the file or attach the file to the email and send it.
+
+You will first need to create backup directory and grant read, write to schema:
+
+SQL> CREATE OR REPLACE DIRECTORY backdir AS /opt/app/oracle/admin/orcl/dpdump  
+  
+SQL> GRANT READ, WRITE ON DIRECTORY backdir TO scott; 
