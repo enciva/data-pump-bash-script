@@ -1,6 +1,13 @@
-# data-pump-bash-script
+# Bash Scripts for Oracle Data Pump
 
 Basic bash scripts to backup a schema using Oracle Data Pump and send to remote location.
+
+
+You will first need to create backup directory and grant read, write to schema:
+
+SQL> CREATE OR REPLACE DIRECTORY backdir AS /opt/app/oracle/admin/orcl/dpdump  
+  
+SQL> GRANT READ, WRITE ON DIRECTORY backdir TO scott; 
 
 1. Export the Scott schema on a daily basis using Data Pump.
 
@@ -14,8 +21,17 @@ Basic bash scripts to backup a schema using Oracle Data Pump and send to remote 
 
 6. FTP the file or attach the file to the email and send it.
 
-You will first need to create backup directory and grant read, write to schema:
+NOTE: For remote SFTP via SSHPASS using irregular port, add 
 
-SQL> CREATE OR REPLACE DIRECTORY backdir AS /opt/app/oracle/admin/orcl/dpdump  
-  
-SQL> GRANT READ, WRITE ON DIRECTORY backdir TO scott; 
+cat >> /root/.ssh/config  
+  &nbsp;&nbsp; 
+  hostname   
+  &nbsp;&nbsp;
+  Port 2727   
+  &nbsp;&nbsp;
+  StrictHostKeyChecking no 
+  &nbsp;
+
+
+
+
